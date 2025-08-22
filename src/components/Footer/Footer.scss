@@ -1,0 +1,9 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.footer {
+  background: $secondary-color;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}

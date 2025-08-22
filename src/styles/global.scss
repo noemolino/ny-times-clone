@@ -1,0 +1,29 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+body {
+  font-family: $font-stack;
+  margin: 0;
+  background: #f9f9f9;
+  color: $primary-color;
+}
+
+a {
+  color: $accent-color;
+  text-decoration: none;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+  padding: 1rem;
+  
+  @media (min-width: 768px){
+    margin: 1rem 2rem;
+  }
+}

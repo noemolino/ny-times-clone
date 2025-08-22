@@ -1,0 +1,11 @@
+.articles-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; 
+
+  @media (min-width: 768px){
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+//   gap: 1rem;
+  }
+}
