@@ -32,45 +32,6 @@ Welcome to the **NY Times Clone** project! This is a single-page application bui
 ## 📂 Project Structure
 
 Here is a simplified overview of the project's file structure, highlighting the organization within the `src` directory:
-
-Certamente. Ecco il file README.md aggiornato, che include la nuova struttura di cartelle. Puoi semplicemente copiarlo e incollarlo nel tuo progetto.
-
-Markdown
-
-# NY Times Clone 📰
-
-Welcome to the **NY Times Clone** project! This is a single-page application built with React and Vite, replicating the look and feel of the New York Times website.
-
----
-
-## 🚀 Features
-
-* **Responsive Design:** The layout adapts to different screen sizes, providing an optimal viewing experience on both desktop and mobile devices.
-* **Component-Based Architecture:** Built using React components for a modular and maintainable codebase.
-* **State Management:** Utilizes **Redux Toolkit** for efficient and predictable state management.
-* **API Integration:** Fetches data (simulated for this project) using **Axios**.
-* **Routing:** Manages navigation using **React Router DOM**.
-* **Styling:** Styled with **Sass** for a clean, organized, and scalable stylesheet.
-
----
-
-## 🛠️ Technologies Used
-
-* **Vite:** A fast build tool that provides a rapid development experience.
-* **React:** A JavaScript library for building user interfaces.
-* **Sass:** A CSS preprocessor that adds power and elegance to the language.
-* **Redux Toolkit:** The official, opinionated, batteries-included toolset for efficient Redux development.
-* **React Router DOM:** Enables client-side routing.
-* **Axios:** A promise-based HTTP client for making API requests.
-* **Prop-types:** For type-checking React props.
-* **React Icons:** For including popular icons in the project.
-* **React Helmet:** For managing document head tags.
-
----
-
-## 📂 Project Structure
-
-Here is a simplified overview of the project's file structure, highlighting the organization within the `src` directory:
     ny-times-clone/
     ├── node_modules/
     ├── public/
