@@ -1,33 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo, useCallback } from "react";
+import { Helmet } from "react-helmet";
 import MainArticle from "../components/MainArticle/MainArticle";
 import NewsCard from "../components/NewsCard/NewsCard";
 import TopicFilters from "../components/TopicFilters/TopicFilters";
 import { getTopStories } from "../api/nyt";
 
-// Funzione di utilità per filtrare
-const applyFilters = (articles, activeFilter, searchTerm) => {
-  let result = articles;
+// Custom hook per applicare i filtri, usando useMemo per l'efficienza
+const useApplyFilters = (allArticles, activeFilter, searchTerm) => {
+  return useMemo(() => {
+    let result = allArticles;
 
-  // Filtra per sezione
-  if (activeFilter && activeFilter !== "All") {
-    result = result.filter(article => article.section === activeFilter);
-  }
+    if (activeFilter && activeFilter !== "All") {
+      result = result.filter(article => article.section === activeFilter);
+    }
 
-  // Filtra per termine di ricerca
-  if (searchTerm) {
-    const termLower = searchTerm.toLowerCase();
-    result = result.filter(article =>
-      article.title.toLowerCase().includes(termLower) ||
-      (article.abstract && article.abstract.toLowerCase().includes(termLower))
-    );
-  }
+    if (searchTerm) {
+      const termLower = searchTerm.toLowerCase();
+      result = result.filter(article =>
+        article.title.toLowerCase().includes(termLower) ||
+        (article.abstract && article.abstract.toLowerCase().includes(termLower))
+      );
+    }
 
-  return result;
+    return result;
+  }, [allArticles, activeFilter, searchTerm]); 
 };
 
-const Home = ({ searchTerm }) => { // Riceve searchTerm come prop
+const Home = ({ searchTerm }) => { 
   const [allArticles, setAllArticles] = useState([]);
-  const [filteredArticles, setFilteredArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [sections, setSections] = useState([]);
   const [activeFilter, setActiveFilter] = useState("All");
@@ -49,36 +49,42 @@ const Home = ({ searchTerm }) => { // Riceve searchTerm come prop
     fetchNews();
   }, []);
 
-  useEffect(() => {
-    // Dipende da allArticles, activeFilter e searchTerm
-    const result = applyFilters(allArticles, activeFilter, searchTerm);
-    setFilteredArticles(result);
-  }, [allArticles, activeFilter, searchTerm]);
+  const filteredArticles = useApplyFilters(allArticles, activeFilter, searchTerm);
 
-  const handleFilterChange = (newFilter) => {
+  const handleFilterChange = useCallback((newFilter) => {
     setActiveFilter(newFilter);
-  };
+  }, []); 
 
   if (loading) return <p>Loading news...</p>;
   if (filteredArticles.length === 0) return <p>No articles found matching your criteria.</p>;
 
   return (
     <div className="home-container">
-      <TopicFilters sections={sections} onFilter={handleFilterChange} />
+      <Helmet>
+        <title>Latest World News – Inspired by The New York Times</title>
+        <meta 
+          name="description" 
+          content="Stay informed with the latest world news, analysis, and insights in a New York Times–inspired digital newspaper. Clear, modern, and always updated." 
+        />
+      </Helmet>
+      
+      <TopicFilters 
+        sections={sections} 
+        onFilter={handleFilterChange} 
+        activeFilter={activeFilter}
+      />
       
       <div className="articles-grid">
-        {filteredArticles.map((article, index) => {
-          if (index % 5 === 0) {
-            return <MainArticle key={article.url} article={article} />;
-          } else {
-            return (
-              <NewsCard
-                key={article.url}
-                title={article.title}
-                url={article.url}
-              />
-            );
-          }
+        {filteredArticles.length > 0 && filteredArticles.map((article, index) => {
+          const ArticleComponent = index % 5 === 0 ? MainArticle : NewsCard;
+          return (
+            <ArticleComponent 
+              key={article.url} 
+              article={article} 
+              title={article.title} 
+              url={article.url}
+            />
+          );
         })}
       </div>
     </div>

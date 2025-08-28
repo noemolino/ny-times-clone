@@ -1,42 +1,49 @@
-// TopicFilters.scss
 @use "../../styles/variables" as *;
 @use "../../styles/mixins" as *;
 
 .topic-filters {
   display: flex;
-  flex-wrap: nowrap; // Keeps buttons in a single line on mobile
-  overflow-x: auto; // Enables horizontal scrolling if buttons overflow
+  flex-wrap: nowrap;
+  overflow-x: auto;
   gap: $gap-sm;
   padding: $padding-sm;
-  margin: 1rem 0;
+  margin: $margin-md 0;
   justify-content: flex-start;
 
-  // Hides the scrollbar on webkit browsers (e.g., Chrome, Safari)
   &::-webkit-scrollbar {
     display: none;
   }
 
-  // Styles for the filter buttons
   &__button {
+    font-family: $secondary-font;
     background-color: transparent;
     border: 1px solid $border-color;
     border-radius: $border-radius-md;
     color: $secondary-color;
     cursor: pointer;
-    font-size: 14px;
-    padding: 0.5rem 1rem;
-    white-space: nowrap; // Prevents button text from wrapping
+    font-size: 0.8rem;
+    padding: $padding-sm $padding-md;
+    white-space: nowrap;
     transition: background-color 0.3s ease, color 0.3s ease;
+     letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 600;
 
     &:hover {
       background-color: $bg-secondary;
       color: $primary-color;
     }
+
+    &.active {
+      background-color: $primary-color;
+      color: $color-white;
+      border-color: $primary-color;
+    }
   }
 
   @media (min-width: 768px) {
-    justify-content: center; // Centers buttons on desktop
-    flex-wrap: wrap; // Allows buttons to wrap to a new line if needed
-    overflow-x: visible; // Makes scrollbar visible again if needed
+    justify-content: center;
+    flex-wrap: wrap;
+    overflow-x: visible;
   }
 }

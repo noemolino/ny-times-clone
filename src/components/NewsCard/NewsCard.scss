@@ -2,23 +2,39 @@
 @use '../../styles/mixins' as *;
 
 .news-card {
-  background: white;
-  border: 1px solid #ddd;
+  background: $color-white;
+  border: 1px solid $border-color;
   border-radius: $border-radius-sm;
-  padding: 1rem;
-  margin: 0.5rem 0;
+  padding: $padding-md;
+  margin: $margin-sm 0;
   grid-column: span 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   min-height: 150px;
 
-  h3 {
-    margin: 0 0 0.5rem;
+  &__title {
+    font-size: 1.4rem;
+    margin: 0 0 $margin-sm;
+    font-weight: 700;
+    line-height: 1.3;
   }
 
-  a {
-    font-size: 0.9rem;
-    font-weight: bold;
+  &__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: $gap-sm;
+    margin-top: $margin-md;
+    color: $primary-color;
+    font-weight: $font-bold;
+
+    &:hover {
+        text-decoration: underline;
+      }
+
+    &-icon {
+      font-size: 1rem;
+      transition: transform 0.3s ease;
+    }
   }
 }

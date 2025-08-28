@@ -4,9 +4,14 @@ import "./Footer.scss";
 const Footer = () => {
   return (
     <footer className="footer">
-      <p>© {new Date().getFullYear()} NYT React Clone.</p>
-      <p>News provided by The New York Times.</p>
-      <p>This project is for demonstration purposes only and not affiliated with The New York Times Company.</p>
+      <div className="footer__title">NYT Clone</div>
+      <div className="footer__text">
+        News provided by The New York Times. <br />
+        This project is for demonstration purposes only and not affiliated with The New York Times Company.
+      </div>
+      <div className="footer__copy">
+        © 2025 NYT React Clone
+      </div>
     </footer>
   );
 };

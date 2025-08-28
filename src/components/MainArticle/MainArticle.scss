@@ -2,62 +2,102 @@
 @use "../../styles/mixins" as *;
 
 .main-article {
-  background: white;
-  border: 1px solid #ddd;
+  background: $color-white;
+  border: 1px solid $border-color;
   padding: $padding-md;
   margin: $margin-sm 0;
   display: flex;
   flex-direction: column;
   grid-column: span 2;
   border-radius: $border-radius-md;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 
   @media (min-width: 768px) {
-    // display: grid;
-    // grid-template-columns: repeat(3, 1fr);
     gap: $gap-md;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
   }
 
   &__text {
     display: flex;
     flex-direction: column;
     height: 100%;
-    margin-bottom: $margin-md;
 
-    h2 {
-      margin: 0 0 $margin-md;
-      margin-top: 0;
+    @media (min-width: 768px) {
+      flex-basis: 60%;
     }
 
-    p {
-      flex-grow: 1; 
+    &-title {
+      font-size: 1.6rem;
+      // font-weight: bold;
+      margin: 0 0 $margin-sm;
+      color: $primary-color;
+      // line-height: 1.2;
+      font-weight: 700;
+      line-height: 1.3;
+
+      @media (min-width: 768px) {
+        font-size: 2rem;
+      }
     }
 
-    a {
-      font-weight: bold;
-      margin-top: auto;
+    &-abstract {
+      font-family: $secondary-font;
+      flex-grow: 1;
+      font-size: 1rem;
+      color: $secondary-color;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    &-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: $gap-sm;
+      margin-top: $margin-md;
+      text-decoration: none;
+      color: $primary-color;
+      font-weight: $font-bold;
+      transition: color 0.3s ease;
+      margin-bottom: $margin-md;
+
+      @media (min-width: 768px) {
+        margin-bottom: 0;
+      }
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    &-cta-icon {
+      font-size: 1rem;
+      transition: transform 0.3s ease;
     }
   }
 
   &__image {
+    flex-basis: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     &-img {
       width: 100%;
-      aspect-ratio: 1 / 1;
+      height: 250px;
       object-fit: cover;
       border-radius: $border-radius-md;
       margin-bottom: $margin-sm;
-
-      @media (min-width: 1024px) {
-        width: 250px;
-        height: 250px;
-      }
     }
 
     &-copy {
       margin: 0;
       font-size: 12px;
-      text-align: end;
+      color: $secondary-color;
+      text-align: right;
+      font-style: italic;
+      font-size: 0.9rem;
     }
   }
 }
