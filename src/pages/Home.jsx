@@ -5,7 +5,6 @@ import NewsCard from "../components/NewsCard/NewsCard";
 import TopicFilters from "../components/TopicFilters/TopicFilters";
 import { getTopStories } from "../api/nyt";
 
-// Custom hook per applicare i filtri, usando useMemo per l'efficienza
 const useApplyFilters = (allArticles, activeFilter, searchTerm) => {
   return useMemo(() => {
     let result = allArticles;

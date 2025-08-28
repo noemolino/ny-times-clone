@@ -6,7 +6,7 @@ import "./Header.scss";
 const Header = ({ onSearch }) => {
   const [currentDate, setCurrentDate] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
-  const [isSearching, setIsSearching] = useState(false); // <-- nuovo stato
+  const [isSearching, setIsSearching] = useState(false);
 
   useEffect(() => {
     const today = new Date();
@@ -22,7 +22,7 @@ const Header = ({ onSearch }) => {
   const handleSearchSubmit = () => {
     if (searchTerm.trim() !== '') {
       onSearch(searchTerm);
-      setIsSearching(true); // attiva modalità ricerca
+      setIsSearching(true);
     }
   };
 
@@ -35,7 +35,7 @@ const Header = ({ onSearch }) => {
   const handleClearSearch = () => {
     setSearchTerm('');
     onSearch('');
-    setIsSearching(false); // torna alla lente
+    setIsSearching(false);
   };
 
   return (

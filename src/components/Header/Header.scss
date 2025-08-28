@@ -74,9 +74,7 @@
       font-size: 2.7rem;
       font-weight: 700;
       letter-spacing: -0.02em;
-      // font-weight: bold;
       margin: 0;
-      // font-size: 2rem;
       text-align: center;
       padding: $padding-sm 0 0;
 
@@ -101,46 +99,7 @@
     width: 250px;
   }
 }
-// .clear-btn {
-//   background-color: transparent;
-//   border: 1px solid #d3d3d3;
-//   border-left: none;
-//   cursor: pointer;
-//   padding: 0.5rem;
-//   height: 2.5rem;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
 
-//   .clear-icon {
-//     width: 15px;
-//     height: 15px;
-//     color: #999;
-
-//     &:hover {
-//       color: #333;
-//     }
-//   }
-// }
-
-
-// .search-btn {
-//   background-color: transparent;
-//   border: 1px solid #d3d3d3;
-//   border-left: none;
-//   border-radius: 0 $border-radius-sm $border-radius-sm 0;
-//   cursor: pointer;
-//   padding: 0.5rem;
-//   height: 2.5rem;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-
-//   .search-icon {
-//     width: 15px;
-//     height: 15px;
-//   }
-// }
 .search-btn {
   background-color: transparent;
   border: 1px solid #d3d3d3;
